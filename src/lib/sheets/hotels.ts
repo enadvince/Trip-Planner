@@ -15,7 +15,8 @@ export async function getHotels(): Promise<Hotel[]> {
       id: row[0] ?? '',
       name: row[1] ?? '',
       area: row[2] ?? '',
-      price: row[3] ? Number(row[3]) : 0,
-      type: row[4] ?? '',
+      country: row[3] ?? '',
+      price: row[4] ? Number(row[4]) : 0,
+      type: row[5] ?? '',
     }));
 }

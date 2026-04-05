@@ -15,7 +15,8 @@ export async function getActivities(): Promise<Activity[]> {
       id: row[0] ?? '',
       name: row[1] ?? '',
       area: row[2] ?? '',
-      cost: row[3] ? Number(row[3]) : 0,
-      category: row[4] ?? '',
+      country: row[3] ?? '',
+      cost: row[4] ? Number(row[4]) : 0,
+      category: row[5] ?? '',
     }));
 }

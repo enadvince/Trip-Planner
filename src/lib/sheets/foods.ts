@@ -15,7 +15,8 @@ export async function getFoods(): Promise<Food[]> {
       id: row[0] ?? '',
       name: row[1] ?? '',
       area: row[2] ?? '',
-      budget: row[3] ?? '',
-      cuisine: row[4] ?? '',
+      country: row[3] ?? '',
+      budget: row[4] ?? '',
+      cuisine: row[5] ?? '',
     }));
 }

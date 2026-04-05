@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { Hotel } from '@/types/hotel';
 import SearchFilterBar from './SearchFilterBar';
 
@@ -10,13 +10,29 @@ type HotelsBrowserProps = {
 
 export default function HotelsBrowser({ hotels }: HotelsBrowserProps) {
   const [search, setSearch] = useState('');
+  const [country, setCountry] = useState('');
   const [area, setArea] = useState('');
 
-  const areas = useMemo(
+  const countries = useMemo(
     () =>
-      [...new Set(hotels.map((hotel) => hotel.area).filter(Boolean))].sort(),
+      [...new Set(hotels.map((hotel) => hotel.country).filter(Boolean))].sort(),
     [hotels]
   );
+
+  const areas = useMemo(() => {
+    return [
+      ...new Set(
+        hotels
+          .filter((hotel) => !country || hotel.country === country)
+          .map((hotel) => hotel.area)
+          .filter(Boolean)
+      ),
+    ].sort();
+  }, [hotels, country]);
+
+  useEffect(() => {
+    setArea('');
+  }, [country]);
 
   const filteredHotels = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -25,23 +41,28 @@ export default function HotelsBrowser({ hotels }: HotelsBrowserProps) {
       const matchesSearch =
         !query ||
         hotel.name.toLowerCase().includes(query) ||
-        hotel.area.toLowerCase().includes(query);
+        hotel.area.toLowerCase().includes(query) ||
+        hotel.country.toLowerCase().includes(query);
 
+      const matchesCountry = !country || hotel.country === country;
       const matchesArea = !area || hotel.area === area;
 
-      return matchesSearch && matchesArea;
+      return matchesSearch && matchesCountry && matchesArea;
     });
-  }, [hotels, search, area]);
+  }, [hotels, search, country, area]);
 
   return (
     <section className="space-y-6">
       <SearchFilterBar
         searchValue={search}
         onSearchChange={setSearch}
+        countryValue={country}
+        onCountryChange={setCountry}
+        countries={countries}
         areaValue={area}
         onAreaChange={setArea}
         areas={areas}
-        searchPlaceholder="Search hotels by name or area"
+        searchPlaceholder="Search hotels by name, country, or area"
       />
 
       <p className="text-sm text-slate-600">
@@ -57,7 +78,9 @@ export default function HotelsBrowser({ hotels }: HotelsBrowserProps) {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-lg font-semibold">{hotel.name}</h2>
-                <p className="text-sm text-slate-500">{hotel.area}</p>
+                <p className="text-sm text-slate-500">
+                  {hotel.area}, {hotel.country}
+                </p>
               </div>
 
               <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium">
