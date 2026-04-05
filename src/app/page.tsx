@@ -15,10 +15,16 @@ export default function HomePage() {
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/planner" className="rounded-xl bg-slate-900 px-5 py-3 text-white">
+          <Link
+            href="/planner"
+            className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 font-medium text-white hover:bg-slate-800"
+          >
             Start Planning
           </Link>
-          <Link href="/explore" className="rounded-xl border px-5 py-3">
+          <Link
+            href="/explore"
+            className="inline-flex items-center justify-center rounded-xl border px-5 py-3 font-medium text-slate-700 hover:bg-slate-100"
+          >
             Explore Options
           </Link>
         </div>
