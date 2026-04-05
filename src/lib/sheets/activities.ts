@@ -4,7 +4,7 @@ import { sheets, SPREADSHEET_ID } from './client';
 export async function getActivities(): Promise<Activity[]> {
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: 'Activities!A2:E',
+    range: 'Activities!A2:Z',
   });
 
   const rows = res.data.values || [];

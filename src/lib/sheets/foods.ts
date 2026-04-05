@@ -4,7 +4,7 @@ import { sheets, SPREADSHEET_ID } from './client';
 export async function getFoods(): Promise<Food[]> {
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: 'Foods!A2:E',
+    range: 'Foods!A2:Z',
   });
 
   const rows = res.data.values || [];
