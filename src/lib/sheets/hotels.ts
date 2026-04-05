@@ -9,11 +9,13 @@ export async function getHotels(): Promise<Hotel[]> {
 
   const rows = res.data.values || [];
 
-  return rows.map((row) => ({
-    id: row[0],       
-    name: row[1],
-    area: row[2],
-    price: Number(row[3]),
-    type: row[4],
+  return rows
+    .filter((row) => row && row[1]?.trim())
+    .map((row) => ({
+      id: row[0] ?? '',
+      name: row[1] ?? '',
+      area: row[2] ?? '',
+      price: row[3] ? Number(row[3]) : 0,
+      type: row[4] ?? '',
     }));
 }

@@ -10,4 +10,4 @@ const auth = new google.auth.GoogleAuth({
 
 export const sheets = google.sheets({ version: 'v4', auth });
 
-export const SPREADSHEET_ID = '1sP9qudfMOfHc7zUHIgU0hnTIz2W64oJJ9ZX73wefUpQ';
+export const SPREADSHEET_ID = '1ynoDdvdz9GYOgD8rV8stKqitnSr-DO0kZOCFKfoOyNs';
