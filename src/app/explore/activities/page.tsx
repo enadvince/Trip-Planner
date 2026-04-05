@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getActivities } from '@/lib/sheets/activities';
 import ActivitiesBrowser from '@/components/explore/ActivitiesBrowser';
 

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getHotels } from '@/lib/sheets/hotels';
 import HotelsBrowser from '@/components/explore/HotelsBrowser';
 

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { getFoods } from '@/lib/sheets/foods';
 import FoodsBrowser from '@/components/explore/FoodsBrowser';
 
