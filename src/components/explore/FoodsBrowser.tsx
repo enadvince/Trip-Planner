@@ -74,16 +74,26 @@ export default function FoodsBrowser({ foods }: FoodsBrowserProps) {
             key={food.id}
             className="rounded-2xl bg-white p-5 shadow-sm"
           >
-            <h2 className="text-lg font-semibold">{food.name}</h2>
-            <p className="mt-1 text-sm text-slate-500">
-              {food.area}, {food.country}
-            </p>
-            <p className="mt-3 text-sm text-slate-600">
-              Cuisine: {food.cuisine}
-            </p>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h2 className="text-lg font-semibold">{food.name}</h2>
+                <p className="mt-1 text-sm text-slate-500">
+                  {food.area}, {food.country}
+                </p>
+              </div>
+
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium">
+                {food.cuisine}
+              </span>
+            </div>
+
             <p className="mt-1 text-sm text-slate-600">
               Budget: {food.budget}
             </p>
+
+            <button className="mt-5 rounded-xl border px-4 py-2 text-sm font-medium">
+              View Details
+            </button>
           </article>
         ))}
       </div>

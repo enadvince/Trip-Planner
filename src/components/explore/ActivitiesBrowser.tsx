@@ -96,6 +96,10 @@ export default function ActivitiesBrowser({
                 Estimated cost: ₱{activity.cost.toLocaleString()}
               </p>
             )}
+
+            <button className="mt-5 rounded-xl border px-4 py-2 text-sm font-medium">
+              View Details
+            </button>
           </article>
         ))}
       </div>
